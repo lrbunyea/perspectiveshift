@@ -16,7 +16,7 @@ public class InstructionController : MonoBehaviour
     void Start()
     {
         InitializeInstructions();
-        SetNextInsruct();
+        instructText.text = instructions[instructCnt];
     }
     #endregion
 
@@ -25,8 +25,18 @@ public class InstructionController : MonoBehaviour
     {
         if (instructCnt < totInstruct)
         {
-            instructText.text = instructions[instructCnt];
             instructCnt++;
+            instructText.text = instructions[instructCnt];
+        }
+    }
+
+    public void SetPreviousInsruct()
+    {
+        if (instructCnt > 0)
+        {
+            instructCnt--;
+            instructText.text = instructions[instructCnt];
+            
         }
     }
     #endregion
@@ -35,9 +45,10 @@ public class InstructionController : MonoBehaviour
     private void InitializeInstructions()
     {
        instructions = new string[] 
-            {"Hey",
-            "Does",
-            "this work?"};
+            {"Put the game board on a play surface that is comfortably accessible to all players.",
+            "Seat players around the board at the four indication symbols.",
+            "All players pick a constant position to sit, this is the only position that you are allowed to consider the game board from.",
+            "Place the structural materials in a location where they are accessible to every player."};
         instructCnt = 0;
         totInstruct = instructions.Length;
     }

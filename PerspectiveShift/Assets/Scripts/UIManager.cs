@@ -12,10 +12,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject versionCanvas;
     [SerializeField] GameObject instructCanvas;
+    [SerializeField] GameObject topicCanvas;
+    [SerializeField] GameObject timerCanvas;
 
     //data variable
     public Version currentVersion;
     public DialogueState currentDialogueState;
+    public string currentTopic = "";
 
     //Application states
     public enum Version
@@ -57,7 +60,6 @@ public class UIManager : MonoBehaviour
     {
         //On start of the application
         ShowMainCanvas();
-        currentDialogueState = DialogueState.Start;
     }
     #endregion
 
@@ -79,6 +81,9 @@ public class UIManager : MonoBehaviour
         mainCanvas.SetActive(true);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(false);
+        topicCanvas.SetActive(false);
+        timerCanvas.SetActive(false);
+        currentDialogueState = DialogueState.Start;
     }
 
     private void ShowVersionCanvas()
@@ -86,6 +91,9 @@ public class UIManager : MonoBehaviour
         mainCanvas.SetActive(false);
         versionCanvas.SetActive(true);
         instructCanvas.SetActive(false);
+        topicCanvas.SetActive(false);
+        timerCanvas.SetActive(false);
+        currentDialogueState = DialogueState.VSelect;
     }
 
     private void ShowInstructCanvas()
@@ -93,6 +101,28 @@ public class UIManager : MonoBehaviour
         mainCanvas.SetActive(false);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(true);
+        topicCanvas.SetActive(false);
+        timerCanvas.SetActive(false);
+    }
+
+    public void ShowTopicCanvas()
+    {
+        mainCanvas.SetActive(false);
+        versionCanvas.SetActive(false);
+        instructCanvas.SetActive(false);
+        topicCanvas.SetActive(true);
+        timerCanvas.SetActive(false);
+        currentDialogueState = DialogueState.TSelect;
+    }
+
+    public void ShowTimerCanvas()
+    {
+        mainCanvas.SetActive(false);
+        versionCanvas.SetActive(false);
+        instructCanvas.SetActive(false);
+        topicCanvas.SetActive(false);
+        timerCanvas.SetActive(true);
+        currentDialogueState = DialogueState.DrawTimer;
     }
     #endregion
 }

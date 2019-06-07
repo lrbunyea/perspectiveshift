@@ -26,11 +26,31 @@ public class TopicController : MonoBehaviour
     private void InitializeTopicList()
     {
         topics = new string[] 
-        {"Topic1",
-        "Topic2",
-        "Topic3",
-        "Topic4",
-        "Topic5"
+        {"Vacationing",
+        "Family",
+        "Loss",
+        "Abmition",
+        "Pain",
+        "Crying",
+        "Dieting",
+        "Dreaming",
+        "Sleeping",
+        "Romance",
+        "Shopping",
+        "Gardening",
+        "Cooking",
+        "School",
+        "Religion",
+        "War",
+        "Homes",
+        "Reading",
+        "Driving",
+        "Eating",
+        "Pets",
+        "Zoos",
+        "Fishing",
+        "Hygiene",
+        "Cleaning"
         };
         numTopics = topics.Length;
         curIndex = 0;

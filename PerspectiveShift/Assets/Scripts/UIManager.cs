@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     //references
     [SerializeField] GameObject mainCanvas;
+    [SerializeField] GameObject introCanvas;
     [SerializeField] GameObject versionCanvas;
     [SerializeField] GameObject instructCanvas;
     [SerializeField] GameObject topicCanvas;
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
     public enum DialogueState
     {
         Start,
+        Introduction,
         VSelect,
         Setup,
         TSelect,
@@ -64,6 +66,11 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Button Press Functions
+    public void StartIntroduction()
+    {
+        ShowIntroCanvas();
+    }
+
     public void StartVersionSelect()
     {
         ShowVersionCanvas();
@@ -79,6 +86,7 @@ public class UIManager : MonoBehaviour
     private void ShowMainCanvas()
     {
         mainCanvas.SetActive(true);
+        introCanvas.SetActive(false);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(false);
         topicCanvas.SetActive(false);
@@ -86,9 +94,21 @@ public class UIManager : MonoBehaviour
         currentDialogueState = DialogueState.Start;
     }
 
+    private void ShowIntroCanvas()
+    {
+        mainCanvas.SetActive(false);
+        introCanvas.SetActive(true);
+        versionCanvas.SetActive(false);
+        instructCanvas.SetActive(false);
+        topicCanvas.SetActive(false);
+        timerCanvas.SetActive(false);
+        currentDialogueState = DialogueState.Introduction;
+    }
+
     private void ShowVersionCanvas()
     {
         mainCanvas.SetActive(false);
+        introCanvas.SetActive(false);
         versionCanvas.SetActive(true);
         instructCanvas.SetActive(false);
         topicCanvas.SetActive(false);
@@ -96,9 +116,10 @@ public class UIManager : MonoBehaviour
         currentDialogueState = DialogueState.VSelect;
     }
 
-    private void ShowInstructCanvas()
+    public void ShowInstructCanvas()
     {
         mainCanvas.SetActive(false);
+        introCanvas.SetActive(false);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(true);
         topicCanvas.SetActive(false);
@@ -108,6 +129,7 @@ public class UIManager : MonoBehaviour
     public void ShowTopicCanvas()
     {
         mainCanvas.SetActive(false);
+        introCanvas.SetActive(false);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(false);
         topicCanvas.SetActive(true);
@@ -118,6 +140,7 @@ public class UIManager : MonoBehaviour
     public void ShowTimerCanvas()
     {
         mainCanvas.SetActive(false);
+        introCanvas.SetActive(false);
         versionCanvas.SetActive(false);
         instructCanvas.SetActive(false);
         topicCanvas.SetActive(false);
